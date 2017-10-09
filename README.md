@@ -60,7 +60,7 @@ end
 
 Now let's set up the server by run `rails s`, then visit the url: http://localhost:3000/pages/home in your browser. It'll ask you so sign in, so you sign up an user with a email and password.
 
-Bingo, we had finish the Rails part, let's do the Go API part.
+Bingo, we had finished the Rails part, let's create a Go API below.
 
 ### Generate the Go API
 
@@ -90,4 +90,4 @@ When we visit the http://localhost:3000/ , we can get a pretty printed JSON in m
 
 <img src="session_json.png" width=700>
 
-
+(WIP)
