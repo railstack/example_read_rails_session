@@ -70,7 +70,7 @@ We use the [go-on-rails](https://github.com/goonr/go-on-rails) to generate a Go 
 $ rails g gor development
 ```
 
-here we use the `development` environment to generate a `go_app` directory in Rails root.
+here we use the `development` environment to generate a `go_app` directory in our Rails project root.
 
 ### Create a controller to read Rails session
 
