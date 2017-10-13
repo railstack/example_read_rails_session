@@ -90,9 +90,9 @@ When we visit the http://localhost:3000/ , we can get a pretty printed JSON in m
 
 <img src="session_json.png" width=715>
 
-### Get and show a user' info
+### Get and show an user's info
 
-Let's create another API to get the user's ID, and user the ID to get the user's info and show it.
+Let's create another API to get the user's ID, and use the ID to get the user's info and show it.
 
 We create a `UserHandler` in our `sessions_controller.go`, and here we'll introduce a nice package [go-simplejson](https://github.com/bitly/go-simplejson) which can get an arbitrary node value to get the user's ID from our session data:
 
