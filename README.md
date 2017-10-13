@@ -90,4 +90,29 @@ When we visit the http://localhost:3000/ , we can get a pretty printed JSON in m
 
 <img src="session_json.png" width=700>
 
-(WIP)
+### Get and show a user' info
+
+Let's create another API to get the user's ID, and user the ID to get the user's info and show it.
+
+We create a `UserHandler` in our `sessions_controller.go`, and here we'll introduce a nice package [go-simplejson](https://github.com/bitly/go-simplejson) which can get an arbitrary node value to get the user's ID from our session data:
+
+```go
+    /* ... */
+	jsn, _ := sj.NewJson(sessData)
+	uid, _ := jsn.Get("warden.user.user.key").GetIndex(0).GetIndex(0).Int64()
+```
+
+and then use `go-on-rails` generated function `FindUser` to get user's info:
+
+```go
+	user, err := m.FindUser(uid)
+    /* ... */
+```
+
+we add a `GET /user` route for the API, and we can see such an output from browser:
+
+
+<img src="user_info_json.png" width=700>
+
+
+The End.
