@@ -225,7 +225,7 @@ func FindUser(id int64) (*User, error) {
 		return nil, errors.New("Invalid ID: it can't be zero")
 	}
 	_user := User{}
-	err := DB.Get(&_user, DB.Rebind(`SELECT * FROM users WHERE id = ? LIMIT 1`), id)
+	err := DB.Get(&_user, DB.Rebind(`SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users WHERE users.id = ? LIMIT 1`), id)
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -236,7 +236,7 @@ func FindUser(id int64) (*User, error) {
 // FirstUser find the first one user by ID ASC order
 func FirstUser() (*User, error) {
 	_user := User{}
-	err := DB.Get(&_user, DB.Rebind(`SELECT * FROM users ORDER BY id ASC LIMIT 1`))
+	err := DB.Get(&_user, DB.Rebind(`SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users ORDER BY users.id ASC LIMIT 1`))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -247,7 +247,7 @@ func FirstUser() (*User, error) {
 // FirstUsers find the first N users by ID ASC order
 func FirstUsers(n uint32) ([]User, error) {
 	_users := []User{}
-	sql := fmt.Sprintf("SELECT * FROM users ORDER BY id ASC LIMIT %v", n)
+	sql := fmt.Sprintf("SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users ORDER BY users.id ASC LIMIT %v", n)
 	err := DB.Select(&_users, DB.Rebind(sql))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
@@ -259,7 +259,7 @@ func FirstUsers(n uint32) ([]User, error) {
 // LastUser find the last one user by ID DESC order
 func LastUser() (*User, error) {
 	_user := User{}
-	err := DB.Get(&_user, DB.Rebind(`SELECT * FROM users ORDER BY id DESC LIMIT 1`))
+	err := DB.Get(&_user, DB.Rebind(`SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users ORDER BY users.id DESC LIMIT 1`))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
 		return nil, err
@@ -270,7 +270,7 @@ func LastUser() (*User, error) {
 // LastUsers find the last N users by ID DESC order
 func LastUsers(n uint32) ([]User, error) {
 	_users := []User{}
-	sql := fmt.Sprintf("SELECT * FROM users ORDER BY id DESC LIMIT %v", n)
+	sql := fmt.Sprintf("SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users ORDER BY users.id DESC LIMIT %v", n)
 	err := DB.Select(&_users, DB.Rebind(sql))
 	if err != nil {
 		log.Printf("Error: %v\n", err)
@@ -288,7 +288,7 @@ func FindUsers(ids ...int64) ([]User, error) {
 	}
 	_users := []User{}
 	idsHolder := strings.Repeat(",?", len(ids)-1)
-	sql := DB.Rebind(fmt.Sprintf(`SELECT * FROM users WHERE id IN (?%s)`, idsHolder))
+	sql := DB.Rebind(fmt.Sprintf(`SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users WHERE users.id IN (?%s)`, idsHolder))
 	idsT := []interface{}{}
 	for _, id := range ids {
 		idsT = append(idsT, interface{}(id))
@@ -304,7 +304,7 @@ func FindUsers(ids ...int64) ([]User, error) {
 // FindUserBy find a single user by a field name and a value
 func FindUserBy(field string, val interface{}) (*User, error) {
 	_user := User{}
-	sqlFmt := `SELECT * FROM users WHERE %s = ? LIMIT 1`
+	sqlFmt := `SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users WHERE %s = ? LIMIT 1`
 	sqlStr := fmt.Sprintf(sqlFmt, field)
 	err := DB.Get(&_user, DB.Rebind(sqlStr), val)
 	if err != nil {
@@ -316,7 +316,7 @@ func FindUserBy(field string, val interface{}) (*User, error) {
 
 // FindUsersBy find all users by a field name and a value
 func FindUsersBy(field string, val interface{}) (_users []User, err error) {
-	sqlFmt := `SELECT * FROM users WHERE %s = ?`
+	sqlFmt := `SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users WHERE %s = ?`
 	sqlStr := fmt.Sprintf(sqlFmt, field)
 	err = DB.Select(&_users, DB.Rebind(sqlStr), val)
 	if err != nil {
@@ -328,7 +328,7 @@ func FindUsersBy(field string, val interface{}) (_users []User, err error) {
 
 // AllUsers get all the User records
 func AllUsers() (users []User, err error) {
-	err = DB.Select(&users, "SELECT * FROM users")
+	err = DB.Select(&users, "SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users")
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -444,7 +444,7 @@ func UserStrCol(col, where string, args ...interface{}) (strColRecs []string, er
 // with placeholders, eg: FindUsersWhere("first_name = ? AND age > ?", "John", 18)
 // will return those records in the table "users" whose first_name is "John" and age elder than 18
 func FindUsersWhere(where string, args ...interface{}) (users []User, err error) {
-	sql := "SELECT * FROM users"
+	sql := "SELECT COALESCE(users.reset_password_token, '') AS reset_password_token, COALESCE(users.reset_password_sent_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS reset_password_sent_at, COALESCE(users.remember_created_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS remember_created_at, COALESCE(users.current_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS current_sign_in_at, COALESCE(users.last_sign_in_at, CONVERT_TZ('0001-01-01 00:00:00','+00:00','UTC')) AS last_sign_in_at, COALESCE(users.current_sign_in_ip, '') AS current_sign_in_ip, COALESCE(users.last_sign_in_ip, '') AS last_sign_in_ip, users.id, users.email, users.encrypted_password, users.sign_in_count, users.created_at, users.updated_at FROM users"
 	if len(where) > 0 {
 		sql = sql + " WHERE " + where
 	}

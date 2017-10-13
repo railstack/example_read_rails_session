@@ -2,9 +2,11 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
 
+	m "../models"
+	sj "github.com/bitly/go-simplejson"
 	"github.com/gin-gonic/gin"
 	"github.com/goonr/gorails/session"
 )
@@ -21,19 +23,35 @@ func ReadHandler(c *gin.Context) {
 	// in this example our app name is "example_read_rails_session", so the key is "_example_read_rails_session_session"
 	sess, err := c.Request.Cookie("_example_read_rails_session_session")
 	if err != nil {
-		fmt.Printf("read cookie err: %v", err)
+		log.Fatalf("read cookie err: %v", err)
 	}
 	sessData, err := getRailsSessionData(sess.Value)
 	if err != nil {
-		fmt.Printf("deserialize err: %v", err)
+		log.Fatalf("deserialize err: %v", err)
 	}
 	var jsonData map[string]interface{}
 	err = json.Unmarshal(sessData, &jsonData)
 	if err != nil {
-		fmt.Printf("json unmarshal err: %v", err)
+		log.Fatalf("json unmarshal err: %v", err)
 	}
 
 	c.JSON(http.StatusOK, gin.H{"data": jsonData})
+}
+
+func UserHandler(c *gin.Context) {
+	sess, err := c.Request.Cookie("_example_read_rails_session_session")
+	if err != nil {
+		log.Fatalf("read cookie err: %v", err)
+	}
+	sessData, err := getRailsSessionData(sess.Value)
+	if err != nil {
+		log.Fatalf("deserialize err: %v", err)
+	}
+	jsn, _ := sj.NewJson(sessData)
+	uid, _ := jsn.Get("warden.user.user.key").GetIndex(0).GetIndex(0).Int64()
+
+	user, _ := m.FindUser(uid)
+	c.JSON(http.StatusOK, gin.H{"data": user})
 }
 
 func getRailsSessionData(sessionCookie string) (decryptedCookieData []byte, err error) {

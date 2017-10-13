@@ -9,14 +9,14 @@ The Go API in this example we use a Rails generator [go-on-rails](https://github
 First, let's create a Rails app:
 
 ```bash
-$ rails new example_read_rails_session --skip-bundle
+$ rails new example_read_rails_session --skip-bundle --database mysql
 ```
 
 here we use the [Devise](https://github.com/plataformatec/devise/) to provide a session, so add `devise` to Gemfile, and don't forget add the gem go-on-rails as well:
 
 ```ruby
 gem 'devise'
-gem 'go-on-rails', '~> 0.1.10'
+gem 'go-on-rails', '~> 0.1.11'
 ```
 
 then run `bundle install`.

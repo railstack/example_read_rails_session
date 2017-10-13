@@ -17,6 +17,7 @@ func main() {
 	r.StaticFile("/favicon.ico", "./public/favicon.ico")
 	// Then we bind some route to some handler(controller action)
 	r.GET("/", c.ReadHandler)
+	r.GET("/user", c.UserHandler)
 	// Let's start the server
 	r.Run(":" + *servePort)
 }
