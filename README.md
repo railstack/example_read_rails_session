@@ -88,7 +88,7 @@ Here our Go server run at port 3000 by default as same as Rails server, so now w
 
 When we visit the http://localhost:3000/ , we can get a pretty printed JSON in my Chrome browser:
 
-<img src="session_json.png" width=700>
+<img src="session_json.png" width=715>
 
 ### Get and show a user' info
 
@@ -112,7 +112,7 @@ user, err := m.FindUser(uid)
 we add a `GET /user` route for the API, and we can see such an output from browser:
 
 
-<img src="user_info_json.png" width=700>
+<img src="user_info_json.png" width=730>
 
 
 The End.
