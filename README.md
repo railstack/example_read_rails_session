@@ -1,6 +1,6 @@
-# A Simple Example of Reading Rails session in A Go API
+# A simple example of parsing Rails session in a Go API
 
-The example shows how to read Rails session from its cookie in a Golang API that's integrated in this same Rails application.
+The example shows how to read a Rails session from its cookie in a Golang API that's integrated in this same Rails application.
 
 We use a Rails generator [go-on-rails](https://github.com/goonr/go-on-rails) to generate the application layout and most codes of the Go APIs in the example, and we mainly write the `contollers` part by ourselvies.
 
