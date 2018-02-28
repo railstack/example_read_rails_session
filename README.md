@@ -72,17 +72,24 @@ $ rails g gor development
 
 here we use the `development` environment to generate a `go_app` directory in our Rails project root.
 
-and don't forget to install Go packages our app depends:
+and don't forget to install Go packages our app depends on by running a predefined Rake task:
 
 ```bash
 $ rails gor:deps
+```
+
+and we also need some other Go packages in this example, we can install them in advance:
+
+```bash
+go get github.com/bitly/go-simplejson
+go get github.com/goonr/gorails/...
 ```
 
 ### Create a controller to read Rails session
 
 Now we'll write an API to read Rails session. First let's create a contoller as `go_app/controllers/sessions_controller.go`.
 
-And here we use a package [gorails](https://github.com/goonr/gorails) to read the session. Please check the [sessions_controller](https://github.com/goonr/example_read_rails_session/blob/master/go_app/controllers/sessions_controller.go) for the details. We can install it by `go get github.com/goonr/gorails`.
+And here we use a package [gorails](https://github.com/goonr/gorails) to read the session. Please check the [sessions_controller](https://github.com/goonr/example_read_rails_session/blob/master/go_app/controllers/sessions_controller.go) for the details.
 
 After set a route in the `main.go`, we can set up our Go server to read the Rails session:
 
