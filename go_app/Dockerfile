@@ -1,0 +1,18 @@
+# Multi-stage builds require Docker 17.05 or higher on the daemon and client.
+# see: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
+
+# build the go app binary
+FROM golang:1.9.2 as builder
+WORKDIR /root/
+COPY . /root/
+RUN perl -pi -e "s/tcp\(.*?:/tcp\(database:/; s/host=\S+? /host=database /" models/db.go
+RUN make deps
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o myapp .
+
+# use the binary app to build the target image
+FROM alpine:latest
+WORKDIR /root/
+ADD views /root/views
+ADD public /root/public
+COPY --from=builder /root/myapp .
+CMD ["./myapp"]

@@ -16,7 +16,7 @@ here we use the [Devise](https://github.com/plataformatec/devise/) to provide a 
 
 ```ruby
 gem 'devise'
-gem 'go-on-rails', '~> 0.1.11'
+gem 'go-on-rails', '~> 0.3.0'
 ```
 
 then run `bundle install`.
@@ -72,16 +72,22 @@ $ rails g gor development
 
 here we use the `development` environment to generate a `go_app` directory in our Rails project root.
 
+and don't forget to install Go packages our app depends:
+
+```bash
+$ rails gor:deps
+```
+
 ### Create a controller to read Rails session
 
 Now we'll write an API to read Rails session. First let's create a contoller as `go_app/controllers/sessions_controller.go`.
 
-And here we use a package [gorails](https://github.com/goonr/gorails) to read the session. Please check the [sessions_controller](https://github.com/goonr/example_read_rails_session/blob/master/go_app/controllers/sessions_controller.go) for the details.
+And here we use a package [gorails](https://github.com/goonr/gorails) to read the session. Please check the [sessions_controller](https://github.com/goonr/example_read_rails_session/blob/master/go_app/controllers/sessions_controller.go) for the details. We can install it by `go get github.com/goonr/gorails`.
 
 After set a route in the `main.go`, we can set up our Go server to read the Rails session:
 
 ```bash
-$ go run main.go
+$ go run main.go -port 3000
 ```
 
 Here our Go server run at port 3000 by default as same as Rails server, so now we visit the Go API, the browser'll send the previous Rails cookie back to Go server too. In realworld applications you maybe need some proxy server like Nginx to do the trick.
