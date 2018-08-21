@@ -5,7 +5,7 @@
 FROM golang:1.9.2 as builder
 WORKDIR /root/
 COPY . /root/
-RUN perl -pi -e "s/tcp\(.*?:/tcp\(database:/; s/host=\S+? /host=database /" models/db.go
+RUN perl -pi -e "s/tcp\(.*?:/tcp\(db:/; s/host=\S+? /host=db /" models/db.go
 RUN make deps
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o myapp .
 

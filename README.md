@@ -16,7 +16,7 @@ here we use the [Devise](https://github.com/plataformatec/devise/) to provide a 
 
 ```ruby
 gem 'devise'
-gem 'go-on-rails', '~> 0.3.0'
+gem 'go-on-rails', '~> 0.3.1'
 ```
 
 then run `bundle install`.

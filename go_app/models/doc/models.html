@@ -61,9 +61,6 @@ Package models includes the functions on the model User.
 			
 			
 				
-				<dd><a href="#AllUsers">func AllUsers() (users []User, err error)</a></dd>
-			
-				
 				<dd><a href="#CreateUser">func CreateUser(am map[string]interface{}) (int64, error)</a></dd>
 			
 				
@@ -74,24 +71,6 @@ Package models includes the functions on the model User.
 			
 				
 				<dd><a href="#DestroyUsersWhere">func DestroyUsersWhere(where string, args ...interface{}) (int64, error)</a></dd>
-			
-				
-				<dd><a href="#FindUsers">func FindUsers(ids ...int64) ([]User, error)</a></dd>
-			
-				
-				<dd><a href="#FindUsersBy">func FindUsersBy(field string, val interface{}) (_users []User, err error)</a></dd>
-			
-				
-				<dd><a href="#FindUsersBySql">func FindUsersBySql(sql string, args ...interface{}) (users []User, err error)</a></dd>
-			
-				
-				<dd><a href="#FindUsersWhere">func FindUsersWhere(where string, args ...interface{}) (users []User, err error)</a></dd>
-			
-				
-				<dd><a href="#FirstUsers">func FirstUsers(n uint32) ([]User, error)</a></dd>
-			
-				
-				<dd><a href="#LastUsers">func LastUsers(n uint32) ([]User, error)</a></dd>
 			
 				
 				<dd><a href="#UpdateUser">func UpdateUser(id int64, am map[string]interface{}) error</a></dd>
@@ -112,9 +91,6 @@ Package models includes the functions on the model User.
 				<dd><a href="#UserIdsWhere">func UserIdsWhere(where string, args ...interface{}) ([]int64, error)</a></dd>
 			
 				
-				<dd><a href="#UserIncludesWhere">func UserIncludesWhere(assocs []string, sql string, args ...interface{}) (_users []User, err error)</a></dd>
-			
-				
 				<dd><a href="#UserIntCol">func UserIntCol(col, where string, args ...interface{}) (intColRecs []int64, err error)</a></dd>
 			
 				
@@ -123,6 +99,9 @@ Package models includes the functions on the model User.
 			
 				
 				<dd><a href="#User">type User</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AllUsers">func AllUsers() (users []User, err error)</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#FindUser">func FindUser(id int64) (*User, error)</a></dd>
@@ -134,10 +113,31 @@ Package models includes the functions on the model User.
 					<dd>&nbsp; &nbsp; <a href="#FindUserBySql">func FindUserBySql(sql string, args ...interface{}) (*User, error)</a></dd>
 				
 					
+					<dd>&nbsp; &nbsp; <a href="#FindUsers">func FindUsers(ids ...int64) ([]User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindUsersBy">func FindUsersBy(field string, val interface{}) (_users []User, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindUsersBySql">func FindUsersBySql(sql string, args ...interface{}) (users []User, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FindUsersWhere">func FindUsersWhere(where string, args ...interface{}) (users []User, err error)</a></dd>
+				
+					
 					<dd>&nbsp; &nbsp; <a href="#FirstUser">func FirstUser() (*User, error)</a></dd>
 				
 					
+					<dd>&nbsp; &nbsp; <a href="#FirstUsers">func FirstUsers(n uint32) ([]User, error)</a></dd>
+				
+					
 					<dd>&nbsp; &nbsp; <a href="#LastUser">func LastUser() (*User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#LastUsers">func LastUsers(n uint32) ([]User, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#UserIncludesWhere">func UserIncludesWhere(assocs []string, sql string, args ...interface{}) (_users []User, err error)</a></dd>
 				
 				
 					
@@ -183,13 +183,15 @@ Package models includes the functions on the model User.
 		
 
 		
-			<h4>Package files</h4>
+			<h3>Package files</h3>
 			<p>
 			<span style="font-size:90%">
 			
 				<a href="/db.go">db.go</a>
 			
 				<a href="/gor_user.go">gor_user.go</a>
+			
+				<a href="/utils.go">utils.go</a>
 			
 			</span>
 			</p>
@@ -245,21 +247,7 @@ Package models includes the functions on the model User.
 		
 			
 			
-			<h2 id="AllUsers">func <a href="/gor_user.go?s=15648:15689#L320">AllUsers</a>
-				<a class="permalink" href="#AllUsers">&#xb6;</a>
-			</h2>
-			<pre>func AllUsers() (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-AllUsers get all the User records.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="CreateUser">func <a href="/gor_user.go?s=21991:22048#L491">CreateUser</a>
+			<h2 id="CreateUser">func <a href="/gor_user.go?s=21985:22042#L485">CreateUser</a>
 				<a class="permalink" href="#CreateUser">&#xb6;</a>
 			</h2>
 			<pre>func CreateUser(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -274,7 +262,7 @@ A named params is key-value map like map[string]interface{}{&#34;first_name&#34;
 		
 			
 			
-			<h2 id="DestroyUser">func <a href="/gor_user.go?s=24037:24069#L560">DestroyUser</a>
+			<h2 id="DestroyUser">func <a href="/gor_user.go?s=23961:23993#L549">DestroyUser</a>
 				<a class="permalink" href="#DestroyUser">&#xb6;</a>
 			</h2>
 			<pre>func DestroyUser(id <a href="/pkg/builtin/#int64">int64</a>) <a href="/pkg/builtin/#error">error</a></pre>
@@ -288,7 +276,7 @@ DestroyUser will destroy a User record specified by the id parameter.
 		
 			
 			
-			<h2 id="DestroyUsers">func <a href="/gor_user.go?s=24296:24342#L570">DestroyUsers</a>
+			<h2 id="DestroyUsers">func <a href="/gor_user.go?s=24220:24266#L559">DestroyUsers</a>
 				<a class="permalink" href="#DestroyUsers">&#xb6;</a>
 			</h2>
 			<pre>func DestroyUsers(ids ...<a href="/pkg/builtin/#int64">int64</a>) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -302,7 +290,7 @@ DestroyUsers will destroy User records those specified by the ids parameters.
 		
 			
 			
-			<h2 id="DestroyUsersWhere">func <a href="/gor_user.go?s=25049:25121#L597">DestroyUsersWhere</a>
+			<h2 id="DestroyUsersWhere">func <a href="/gor_user.go?s=24973:25045#L586">DestroyUsersWhere</a>
 				<a class="permalink" href="#DestroyUsersWhere">&#xb6;</a>
 			</h2>
 			<pre>func DestroyUsersWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -318,95 +306,7 @@ And this func will not call the association dependent action
 		
 			
 			
-			<h2 id="FindUsers">func <a href="/gor_user.go?s=12155:12199#L273">FindUsers</a>
-				<a class="permalink" href="#FindUsers">&#xb6;</a>
-			</h2>
-			<pre>func FindUsers(ids ...<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-FindUsers find one or more users by the given ID(s).
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="FindUsersBy">func <a href="/gor_user.go?s=14582:14656#L308">FindUsersBy</a>
-				<a class="permalink" href="#FindUsersBy">&#xb6;</a>
-			</h2>
-			<pre>func FindUsersBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-FindUsersBy find all users by a field name and a value.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="FindUsersBySql">func <a href="/gor_user.go?s=21533:21611#L475">FindUsersBySql</a>
-				<a class="permalink" href="#FindUsersBySql">&#xb6;</a>
-			</h2>
-			<pre>func FindUsersBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-FindUsersBySql query use a complete SQL clause
-with placeholders, eg: FindUsersBySql(&#34;SELECT * FROM users WHERE first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
-will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="FindUsersWhere">func <a href="/gor_user.go?s=19590:19670#L436">FindUsersWhere</a>
-				<a class="permalink" href="#FindUsersWhere">&#xb6;</a>
-			</h2>
-			<pre>func FindUsersWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-FindUsersWhere query use a partial SQL clause that usually following after WHERE
-with placeholders, eg: FindUsersWhere(&#34;first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
-will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="FirstUsers">func <a href="/gor_user.go?s=9036:9077#L238">FirstUsers</a>
-				<a class="permalink" href="#FirstUsers">&#xb6;</a>
-			</h2>
-			<pre>func FirstUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-FirstUsers find the first N users by ID ASC order.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="LastUsers">func <a href="/gor_user.go?s=11098:11138#L261">LastUsers</a>
-				<a class="permalink" href="#LastUsers">&#xb6;</a>
-			</h2>
-			<pre>func LastUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-LastUsers find the last N users by ID DESC order.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="UpdateUser">func <a href="/gor_user.go?s=26683:26741#L640">UpdateUser</a>
+			<h2 id="UpdateUser">func <a href="/gor_user.go?s=26607:26665#L629">UpdateUser</a>
 				<a class="permalink" href="#UpdateUser">&#xb6;</a>
 			</h2>
 			<pre>func UpdateUser(id <a href="/pkg/builtin/#int64">int64</a>, am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -420,7 +320,7 @@ UpdateUser is used to update a record with a id and map[string]interface{} typed
 		
 			
 			
-			<h2 id="UpdateUsersBySql">func <a href="/gor_user.go?s=28352:28421#L695">UpdateUsersBySql</a>
+			<h2 id="UpdateUsersBySql">func <a href="/gor_user.go?s=28212:28281#L679">UpdateUsersBySql</a>
 				<a class="permalink" href="#UpdateUsersBySql">&#xb6;</a>
 			</h2>
 			<pre>func UpdateUsersBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -435,7 +335,7 @@ using the &#39;?&#39; binding syntax.
 		
 			
 			
-			<h2 id="UserCount">func <a href="/gor_user.go?s=16594:16631#L330">UserCount</a>
+			<h2 id="UserCount">func <a href="/gor_user.go?s=16588:16625#L324">UserCount</a>
 				<a class="permalink" href="#UserCount">&#xb6;</a>
 			</h2>
 			<pre>func UserCount() (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -449,7 +349,7 @@ UserCount get the count of all the User records.
 		
 			
 			
-			<h2 id="UserCountWhere">func <a href="/gor_user.go?s=16832:16907#L340">UserCountWhere</a>
+			<h2 id="UserCountWhere">func <a href="/gor_user.go?s=16826:16901#L334">UserCountWhere</a>
 				<a class="permalink" href="#UserCountWhere">&#xb6;</a>
 			</h2>
 			<pre>func UserCountWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (c <a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -463,7 +363,7 @@ UserCountWhere get the count of all the User records with a where clause.
 		
 			
 			
-			<h2 id="UserIds">func <a href="/gor_user.go?s=17983:18022#L380">UserIds</a>
+			<h2 id="UserIds">func <a href="/gor_user.go?s=17977:18016#L374">UserIds</a>
 				<a class="permalink" href="#UserIds">&#xb6;</a>
 			</h2>
 			<pre>func UserIds() (ids []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -477,7 +377,7 @@ UserIds get all the IDs of User records.
 		
 			
 			
-			<h2 id="UserIdsWhere">func <a href="/gor_user.go?s=18219:18288#L390">UserIdsWhere</a>
+			<h2 id="UserIdsWhere">func <a href="/gor_user.go?s=18213:18282#L384">UserIdsWhere</a>
 				<a class="permalink" href="#UserIdsWhere">&#xb6;</a>
 			</h2>
 			<pre>func UserIdsWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) ([]<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -491,21 +391,7 @@ UserIdsWhere get all the IDs of User records by where restriction.
 		
 			
 			
-			<h2 id="UserIncludesWhere">func <a href="/gor_user.go?s=17428:17527#L359">UserIncludesWhere</a>
-				<a class="permalink" href="#UserIncludesWhere">&#xb6;</a>
-			</h2>
-			<pre>func UserIncludesWhere(assocs []<a href="/pkg/builtin/#string">string</a>, sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-UserIncludesWhere get the User associated models records, currently it&#39;s not same as the corresponding &#34;includes&#34; function but &#34;preload&#34; instead in Ruby on Rails. It means that the &#34;sql&#34; should be restricted on User model.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="UserIntCol">func <a href="/gor_user.go?s=18429:18516#L396">UserIntCol</a>
+			<h2 id="UserIntCol">func <a href="/gor_user.go?s=18423:18510#L390">UserIntCol</a>
 				<a class="permalink" href="#UserIntCol">&#xb6;</a>
 			</h2>
 			<pre>func UserIntCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (intColRecs []<a href="/pkg/builtin/#int64">int64</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -519,7 +405,7 @@ UserIntCol get some int64 typed column of User by where restriction.
 		
 			
 			
-			<h2 id="UserStrCol">func <a href="/gor_user.go?s=18912:19000#L415">UserStrCol</a>
+			<h2 id="UserStrCol">func <a href="/gor_user.go?s=18906:18994#L409">UserStrCol</a>
 				<a class="permalink" href="#UserStrCol">&#xb6;</a>
 			</h2>
 			<pre>func UserStrCol(col, where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (strColRecs []<a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -564,7 +450,19 @@ UserStrCol get some string typed column of User by where restriction.
 
 			
 				
-				<h3 id="FindUser">func <a href="/gor_user.go?s=6936:6974#L213">FindUser</a>
+				<h3 id="AllUsers">func <a href="/gor_user.go?s=15642:15683#L314">AllUsers</a>
+					<a class="permalink" href="#AllUsers">&#xb6;</a>
+				</h3>
+				<pre>func AllUsers() (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+AllUsers get all the User records.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindUser">func <a href="/gor_user.go?s=6930:6968#L207">FindUser</a>
 					<a class="permalink" href="#FindUser">&#xb6;</a>
 				</h3>
 				<pre>func FindUser(id <a href="/pkg/builtin/#int64">int64</a>) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -576,7 +474,7 @@ FindUser find a single user by an ID.
 				
 			
 				
-				<h3 id="FindUserBy">func <a href="/gor_user.go?s=13486:13547#L295">FindUserBy</a>
+				<h3 id="FindUserBy">func <a href="/gor_user.go?s=13480:13541#L289">FindUserBy</a>
 					<a class="permalink" href="#FindUserBy">&#xb6;</a>
 				</h3>
 				<pre>func FindUserBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -588,7 +486,7 @@ FindUserBy find a single user by a field name and a value.
 				
 			
 				
-				<h3 id="FindUserBySql">func <a href="/gor_user.go?s=20977:21043#L457">FindUserBySql</a>
+				<h3 id="FindUserBySql">func <a href="/gor_user.go?s=20971:21037#L451">FindUserBySql</a>
 					<a class="permalink" href="#FindUserBySql">&#xb6;</a>
 				</h3>
 				<pre>func FindUserBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -602,7 +500,59 @@ will return only One record in the table &#34;users&#34; whose first_name is &#3
 				
 			
 				
-				<h3 id="FirstUser">func <a href="/gor_user.go?s=8027:8058#L227">FirstUser</a>
+				<h3 id="FindUsers">func <a href="/gor_user.go?s=12149:12193#L267">FindUsers</a>
+					<a class="permalink" href="#FindUsers">&#xb6;</a>
+				</h3>
+				<pre>func FindUsers(ids ...<a href="/pkg/builtin/#int64">int64</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindUsers find one or more users by the given ID(s).
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindUsersBy">func <a href="/gor_user.go?s=14576:14650#L302">FindUsersBy</a>
+					<a class="permalink" href="#FindUsersBy">&#xb6;</a>
+				</h3>
+				<pre>func FindUsersBy(field <a href="/pkg/builtin/#string">string</a>, val interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindUsersBy find all users by a field name and a value.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindUsersBySql">func <a href="/gor_user.go?s=21527:21605#L469">FindUsersBySql</a>
+					<a class="permalink" href="#FindUsersBySql">&#xb6;</a>
+				</h3>
+				<pre>func FindUsersBySql(sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindUsersBySql query use a complete SQL clause
+with placeholders, eg: FindUsersBySql(&#34;SELECT * FROM users WHERE first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
+will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FindUsersWhere">func <a href="/gor_user.go?s=19584:19664#L430">FindUsersWhere</a>
+					<a class="permalink" href="#FindUsersWhere">&#xb6;</a>
+				</h3>
+				<pre>func FindUsersWhere(where <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FindUsersWhere query use a partial SQL clause that usually following after WHERE
+with placeholders, eg: FindUsersWhere(&#34;first_name = ? AND age &gt; ?&#34;, &#34;John&#34;, 18)
+will return those records in the table &#34;users&#34; whose first_name is &#34;John&#34; and age elder than 18.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FirstUser">func <a href="/gor_user.go?s=8021:8052#L221">FirstUser</a>
 					<a class="permalink" href="#FirstUser">&#xb6;</a>
 				</h3>
 				<pre>func FirstUser() (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -614,7 +564,19 @@ FirstUser find the first one user by ID ASC order.
 				
 			
 				
-				<h3 id="LastUser">func <a href="/gor_user.go?s=10090:10120#L250">LastUser</a>
+				<h3 id="FirstUsers">func <a href="/gor_user.go?s=9030:9071#L232">FirstUsers</a>
+					<a class="permalink" href="#FirstUsers">&#xb6;</a>
+				</h3>
+				<pre>func FirstUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FirstUsers find the first N users by ID ASC order.
+</p>
+
+				
+				
+			
+				
+				<h3 id="LastUser">func <a href="/gor_user.go?s=10084:10114#L244">LastUser</a>
 					<a class="permalink" href="#LastUser">&#xb6;</a>
 				</h3>
 				<pre>func LastUser() (*<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -625,10 +587,34 @@ LastUser find the last one user by ID DESC order.
 				
 				
 			
+				
+				<h3 id="LastUsers">func <a href="/gor_user.go?s=11092:11132#L255">LastUsers</a>
+					<a class="permalink" href="#LastUsers">&#xb6;</a>
+				</h3>
+				<pre>func LastUsers(n <a href="/pkg/builtin/#uint32">uint32</a>) ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+LastUsers find the last N users by ID DESC order.
+</p>
+
+				
+				
+			
+				
+				<h3 id="UserIncludesWhere">func <a href="/gor_user.go?s=17422:17521#L353">UserIncludesWhere</a>
+					<a class="permalink" href="#UserIncludesWhere">&#xb6;</a>
+				</h3>
+				<pre>func UserIncludesWhere(assocs []<a href="/pkg/builtin/#string">string</a>, sql <a href="/pkg/builtin/#string">string</a>, args ...interface{}) (_users []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+UserIncludesWhere get the User associated models records, currently it&#39;s not same as the corresponding &#34;includes&#34; function but &#34;preload&#34; instead in Ruby on Rails. It means that the &#34;sql&#34; should be restricted on User model.
+</p>
+
+				
+				
+			
 
 			
 				
-				<h3 id="User.Create">func (*User) <a href="/gor_user.go?s=22728:22770#L523">Create</a>
+				<h3 id="User.Create">func (*User) <a href="/gor_user.go?s=22652:22694#L512">Create</a>
 					<a class="permalink" href="#User.Create">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Create() (<a href="/pkg/builtin/#int64">int64</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -641,7 +627,7 @@ Create is a method for User to create a record.
 				
 			
 				
-				<h3 id="User.Destroy">func (*User) <a href="/gor_user.go?s=23793:23827#L551">Destroy</a>
+				<h3 id="User.Destroy">func (*User) <a href="/gor_user.go?s=23717:23751#L540">Destroy</a>
 					<a class="permalink" href="#User.Destroy">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Destroy() <a href="/pkg/builtin/#error">error</a></pre>
@@ -654,7 +640,7 @@ Destroy is method used for a User object to be destroyed.
 				
 			
 				
-				<h3 id="User.Save">func (*User) <a href="/gor_user.go?s=25652:25683#L618">Save</a>
+				<h3 id="User.Save">func (*User) <a href="/gor_user.go?s=25576:25607#L607">Save</a>
 					<a class="permalink" href="#User.Save">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Save() <a href="/pkg/builtin/#error">error</a></pre>
@@ -668,7 +654,7 @@ If no id provided a new record will be created. FIXME: A UPSERT action will be i
 				
 			
 				
-				<h3 id="User.Update">func (*User) <a href="/gor_user.go?s=27395:27453#L667">Update</a>
+				<h3 id="User.Update">func (*User) <a href="/gor_user.go?s=27255:27313#L651">Update</a>
 					<a class="permalink" href="#User.Update">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) Update(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -681,7 +667,7 @@ Update is a method used to update a User record with the map[string]interface{} 
 				
 			
 				
-				<h3 id="User.UpdateAttributes">func (*User) <a href="/gor_user.go?s=27719:27787#L676">UpdateAttributes</a>
+				<h3 id="User.UpdateAttributes">func (*User) <a href="/gor_user.go?s=27579:27647#L660">UpdateAttributes</a>
 					<a class="permalink" href="#User.UpdateAttributes">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) UpdateAttributes(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -694,7 +680,7 @@ UpdateAttributes method is supposed to be used to update User records as corresp
 				
 			
 				
-				<h3 id="User.UpdateColumns">func (*User) <a href="/gor_user.go?s=28047:28112#L685">UpdateColumns</a>
+				<h3 id="User.UpdateColumns">func (*User) <a href="/gor_user.go?s=27907:27972#L669">UpdateColumns</a>
 					<a class="permalink" href="#User.UpdateColumns">&#xb6;</a>
 				</h3>
 				<pre>func (_user *<a href="#User">User</a>) UpdateColumns(am map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
@@ -754,7 +740,7 @@ Current get the current page of UserPage object for pagination.
 				
 			
 				
-				<h3 id="UserPage.GetPage">func (*UserPage) <a href="/gor_user.go?s=4742:4810#L134">GetPage</a>
+				<h3 id="UserPage.GetPage">func (*UserPage) <a href="/gor_user.go?s=4736:4804#L128">GetPage</a>
 					<a class="permalink" href="#UserPage.GetPage">&#xb6;</a>
 				</h3>
 				<pre>func (_p *<a href="#UserPage">UserPage</a>) GetPage(direction <a href="/pkg/builtin/#string">string</a>) (ps []<a href="#User">User</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -768,7 +754,7 @@ the parameter passed in, i.e. one of &#34;previous, current or next&#34;.
 				
 			
 				
-				<h3 id="UserPage.Next">func (*UserPage) <a href="/gor_user.go?s=3694:3736#L101">Next</a>
+				<h3 id="UserPage.Next">func (*UserPage) <a href="/gor_user.go?s=3690:3732#L97">Next</a>
 					<a class="permalink" href="#UserPage.Next">&#xb6;</a>
 				</h3>
 				<pre>func (_p *<a href="#UserPage">UserPage</a>) Next() ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
@@ -781,7 +767,7 @@ Next get the next page of UserPage object for pagination.
 				
 			
 				
-				<h3 id="UserPage.Previous">func (*UserPage) <a href="/gor_user.go?s=2749:2795#L69">Previous</a>
+				<h3 id="UserPage.Previous">func (*UserPage) <a href="/gor_user.go?s=2747:2793#L67">Previous</a>
 					<a class="permalink" href="#UserPage.Previous">&#xb6;</a>
 				</h3>
 				<pre>func (_p *<a href="#UserPage">UserPage</a>) Previous() ([]<a href="#User">User</a>, <a href="/pkg/builtin/#error">error</a>)</pre>

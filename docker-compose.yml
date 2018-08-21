@@ -2,7 +2,7 @@ version: '3'
 
 services:
   # generated according to the config/database.yml
-  database:
+  db:
     image: mysql
     ports:
       - '3306:3306'
@@ -15,7 +15,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - database
+      - db
 
   # golang app part. It depends on the rails_app to initialize the database
   go_app:
@@ -27,5 +27,5 @@ services:
     ports:
       - "4000:4000"
     depends_on:
-      - database
+      - db
       - rails_app
