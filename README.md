@@ -97,7 +97,7 @@ After set a route in the `main.go`, we can set up our Go server to read the Rail
 $ go run main.go -port 3000
 ```
 
-Here our Go server run at port 3000 by default as same as Rails server, so now we visit the Go API, the browser'll send the previous Rails cookie back to Go server too. In realworld applications you maybe need some proxy server like Nginx to do the trick.
+Here our Go server run at port 3000 as same as Rails server, then we visit the Go API, the browser'll send the previous Rails cookie back to Go server too. In realworld applications you maybe need some proxy server like Nginx to do the trick.
 
 When we visit the http://localhost:3000/ , we can get a pretty printed JSON in my Chrome browser:
 
